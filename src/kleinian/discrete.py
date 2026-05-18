@@ -1,4 +1,5 @@
 import numpy as np
+from scipy.spatial.distance import cdist
 from typing import TYPE_CHECKING
 from .mobius import Mobius
 
@@ -26,7 +27,6 @@ def is_elementary(group) -> bool:
         return True
     if len(pts) <= 2:
         return True
-    from scipy.spatial.distance import cdist
     coords = np.column_stack([np.real(pts), np.imag(pts)])
     sample = coords[:min(50, len(coords))]
     dists = cdist(sample, sample)

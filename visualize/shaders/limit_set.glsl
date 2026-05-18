@@ -13,6 +13,8 @@ uniform mat3 gen_b_im;
 
 out vec4 fragColor;
 
+const float PI = 3.14159265;
+
 vec2 cmul(vec2 a, vec2 b) {
     return vec2(a.x*b.x - a.y*b.y, a.x*b.y + a.y*b.x);
 }
@@ -86,7 +88,7 @@ void main() {
     }
 
     float t = escape_iter / float(max_iter);
-    float hue = fract(arg_accum / (2.0 * 3.14159265) * 0.5 + t * 0.7);
+    float hue = fract(arg_accum / (2.0 * PI) * 0.5 + t * 0.7);
     float sat = 0.8;
     float val = (escape_iter < float(max_iter)) ? 1.0 : (dist_est < 0.1 ? 0.0 : 0.05);
 
